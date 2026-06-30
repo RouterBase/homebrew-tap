@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew update
+      - run: brew audit --strict Formula/routerbase.rb
+      - run: brew install --formula Formula/routerbase.rb
+      - run: brew test routerbase
