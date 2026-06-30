@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: brew update
-      - run: brew audit --strict Formula/routerbase.rb
-      - run: brew install --formula Formula/routerbase.rb
+      - run: brew tap RouterBase/tap "$GITHUB_WORKSPACE"
+      - run: brew audit --strict routerbase
+      - run: brew install routerbase
       - run: brew test routerbase
